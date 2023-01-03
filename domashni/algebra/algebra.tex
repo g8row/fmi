@@ -1,0 +1,282 @@
+\documentclass{article}
+
+\usepackage{amsmath} 
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[bulgarian,english]{babel}
+%\usepackage[ddmmyyyy]{datetime}
+\usepackage{framed} 
+
+\title{Домашно 2}
+\author{Александър Гуров}
+\date{\datebulgarian{\today}}
+
+\begin{document}
+
+\maketitle
+
+\section*{Задача 1} %1
+От уравненията:
+\[
+    a_1 = (1, -1, 1, -1, -1),  a_2 = (2, 1, 1, 1, -1),  a_3 = (1, 1, -1, 1, 1)
+\]
+Съставяме система уравнения:
+\[
+    \left| \begin{array}{cccccc}
+        x_1   & - x_2 & + x_3 & - x_4 & - x_5 & =0 \\
+        2 x_1 & + x_2 & + x_3 & + x_4 & - x_5 & =0 \\
+        x_1   & + x_2 & - x_3 & + x_4 & + x_5 & =0
+    \end{array}
+    \right.
+\]
+A от нея съставяме матрица:
+\[
+    \left(
+    \begin{array}{ccccc}
+            1 & -1 & 1  & -1 & -1 \\
+            2 & 1  & 1  & 1  & -1 \\
+            1 & 1  & -1 & 1  & 1
+        \end{array}
+    \right)
+\]
+И я решаваме:
+\[
+    \sim\left(
+    \begin{array}{ccccc}
+            1 & -1 & 1  & -1 & -1 \\
+            0 & 3  & -1 & 3  & 1  \\
+            0 & 2  & -2 & 2  & 2
+        \end{array}
+    \right)
+    \sim\left(
+    \begin{array}{ccccc}
+            1 & -1 & 1            & -1 & -1           \\
+            0 & 3  & -1           & 3  & 1            \\
+            0 & 0  & -\frac{4}{3} & 0  & -\frac{4}{3}
+        \end{array}
+    \right)
+\]
+\[
+    \sim\left(
+    \begin{array}{ccccc}
+            1 & -1 & 1  & -1 & -1 \\
+            0 & 3  & -1 & 3  & 1  \\
+            0 & 0  & 1  & 0  & -1
+        \end{array}
+    \right)
+    \sim\left(
+    \begin{array}{ccccc}
+            1 & -1 & 0 & -1 & 0  \\
+            0 & 3  & 0 & 3  & 0  \\
+            0 & 0  & 1 & 0  & -1
+        \end{array}
+    \right)
+\]
+\begin{equation}
+    \label{matrixU}
+    \sim\left(
+    \begin{array}{ccccc}
+            1 & 0 & 0 & 0 & 0  \\
+            0 & 1 & 0 & 1 & 0  \\
+            0 & 0 & 1 & 0 & -1
+        \end{array}
+    \right)
+\end{equation}
+Векторите $a_1 = (1,0,0,0,0), a_2 = (0,1,0,1,0)$ и $a_3=(0,0,1,0,-1)$ са ЛНЗ и образуват базис базис на U.
+\newpage
+Дадена е хомогенната система линейни уравнения за U:
+\[
+    \left| \begin{array}{cccccc}
+        x_1   & - x_2 & + 2 x _3 & - 3 x_4 & + 7 x_5 & =0 \\
+        2 x_1 & + x_2 & - 3 x_3  & - 6 x_4 & + 4 x_5 & =0 \\
+        x_1   & - x_2 & - 2 x_3  & - 3 x_4 & + 3 x_5 & =0
+    \end{array}
+    \right.
+\]
+От тази система линейни уравнения съставяме матрица и я решаваме:
+\[
+    \left( \begin{array}{ccccc}
+            1 & -1 & 2  & -3 & 7 \\
+            2 & 1  & -3 & -6 & 4 \\
+            1 & -1 & -2 & -3 & 3
+        \end{array}
+    \right)
+\]
+\[
+    \sim\left(\begin{array}{ccccc}
+            1 & -1 & 2  & -3 & 7   \\
+            0 & 3  & -7 & 0  & -10 \\
+            0 & 0  & -4 & 0  & -4
+        \end{array}
+    \right)
+    \sim\left(\begin{array}{ccccc}
+            1 & -1 & 0 & -3 & 5  \\
+            0 & 3  & 0 & 0  & -3 \\
+            0 & 0  & 1 & 0  & 1
+        \end{array}
+    \right)
+\]
+\begin{equation}\label{oprostenaSistemaW}
+    \sim\left(\begin{array}{ccccc}
+            1 & 0 & 0 & -3 & 4  \\
+            0 & 1 & 0 & 0  & -1 \\
+            0 & 0 & 1 & 0  & 1
+        \end{array}
+    \right)
+\end{equation}
+Съставяме ФСР с независими променливи $x_4$ и $x_5$:
+\begin{center}
+    $x_4=p, x_5=q: x_3=-q, x_2=q, x_1=3p-4q$ \\
+    $(3p-4q,q,-q,p,q)$\\
+    При $x_4=1:(3,0,0,1,0)$\\
+    При $x_5=1:(-4,1,-1,0,1)$\\
+\end{center}
+\begin{align}\label{fsrW}
+    \text{ФСР на W:}
+    \left|\begin{array}{ccccc}
+              3x_1  & +x_4 & =0               \\
+              -4x_1 & +x_2 & -x_3 & +x_5 & =0
+          \end{array}\right.
+\end{align}
+\begin{align}\label{bazisW}
+    \text{Базис на W:}
+    \left(\begin{array}{ccccc}
+                  3  & 0 & 0  & 1 & 0 \\
+                  -4 & 1 & -1 & 0 & 1
+              \end{array}\right)
+\end{align}
+
+За да намерим базиса на $U+W$, трябва да обединим техните базиси (на $U$(\ref*{matrixU}), на W(\ref*{bazisW})):
+\[
+    \left( \begin{array}{ccccc}
+            1  & -1 & 1  & -1 & -1 \\
+            2  & 1  & 1  & 1  & -1 \\
+            1  & 1  & -1 & 1  & 1  \\
+            3  & 0  & 0  & 1  & 0  \\
+            -4 & 1  & -1 & 0  & 1
+        \end{array}
+    \right)
+\]
+\[
+    \sim\left( \begin{array}{ccccc}
+            1 & -1 & 1  & -1 & -1 \\
+            0 & 3  & -1 & 3  & 1  \\
+            0 & 2  & -2 & 2  & 2  \\
+            0 & 3  & -3 & 4  & 3  \\
+            0 & -3 & 3  & -4 & -3
+        \end{array}
+    \right)
+    \sim\left( \begin{array}{ccccc}
+            1 & -1 & 1  & -1 & -1 \\
+            0 & 3  & -1 & 3  & 1  \\
+            0 & 1  & -1 & 1  & 1  \\
+            0 & 3  & -3 & 4  & 3
+        \end{array}
+    \right)
+\]
+\[
+    \sim\left( \begin{array}{ccccc}
+            1 & 0 & 0  & 0 & 0  \\
+            0 & 0 & 2  & 0 & -2 \\
+            0 & 1 & -1 & 1 & 1  \\
+            0 & 0 & 0  & 1 & 0
+        \end{array}
+    \right)
+    \sim\left( \begin{array}{ccccc}
+            1 & 0 & 0 & 0 & 0  \\
+            0 & 0 & 1 & 0 & -1 \\
+            0 & 1 & 0 & 1 & 0  \\
+            0 & 0 & 0 & 1 & 0
+        \end{array}
+    \right)
+\]
+Получаваме базиса на $U+W$. Сега чрез твърдението:
+\[
+    dim(U+W)=dimU+dimW-dim(U \cap W)
+\]
+Намираме размерността на $dim(U \cap W)$:
+\[
+    4=3+2-dim(U \cap W)
+\]
+\[
+    dim(U \cap W)=1
+\]
+За да намерим базиса на сечението $U \cap W$,
+трябва да обединим ФСР на U и
+дадената хомогенната система линейни уравнения за W.
+От базиса на U(\ref*{matrixU}) съставяме следната ФСР на U:
+\[
+    \left(
+    \begin{array}{ccccc}
+            1 & 0 & 0 & 0 & 0  \\
+            0 & 1 & 0 & 1 & 0  \\
+            0 & 0 & 1 & 0 & -1
+        \end{array}
+    \right)
+\]
+\[
+    x_1 = 0 \ x_2=q, \ x_3=s, \ x_4=-q, \ x_5=s
+\]
+\begin{center}
+    При $x_2 = 1: (0, 1, 0, -1, 0)$ \\
+    При $x_3 = 1: (0, 0, 1, 0, 1)$
+\end{center}
+\begin{align}\label{fsrU}
+    \text{ФСР на U:}
+    \left|\begin{array}{ccccc}
+              x_2 & -x_4 & =0 \\
+              x_3 & x_5  & =0
+          \end{array}\right.
+\end{align}
+Обединяваме ФСР на U(\ref*{fsrU}) и дадената в условието система за W:
+\[
+    \left| \begin{array}{cccccc}
+        x_1   & - x_2 & + 2 x_3 & - 3 x_4 & + 7 x_5 & =0 \\
+        2 x_1 & + x_2 & - 3 x_3 & - 6 x_4 & + 4 x_5 & =0 \\
+        x_1   & - x_2 & - 2 x_3 & - 3 x_4 & + 3 x_5 & =0 \\
+        x_2   & - x_4 & =0                               \\
+        x_3   & + x_5 & =0
+    \end{array}
+    \right.
+\]
+Съставяме матрица и я решаваме:
+\[
+    \left(\begin{array}{ccccc}
+            1 & -1 & 2  & -3  & 7 \\
+            2 & 1  & -3 & -6  & 4 \\
+            1 & -1 & -2 & -3  & 3 \\
+            0 & 1  & 0  & - 1 & 0 \\
+            0 & 0  & 1  & 0   & 1
+        \end{array}
+    \right)
+\]
+Заместваме първите 3 реда с вече опростената матрица на системата\\ уравнения за W(\ref*{oprostenaSistemaW}):
+\[
+    \sim\left( \begin{array}{ccccc}
+            1 & 0 & 0 & -3  & 4  \\
+            0 & 1 & 0 & 0   & -1 \\
+            0 & 0 & 1 & 0   & 1  \\
+            0 & 1 & 0 & - 1 & 0  \\
+            0 & 0 & 1 & 0   & 1
+        \end{array}
+    \right)
+    \sim\left( \begin{array}{ccccc}
+            1 & 0 & 0 & -3  & 4  \\
+            0 & 1 & 0 & 0   & -1 \\
+            0 & 1 & 0 & - 1 & 0  \\
+            0 & 0 & 1 & 0   & 1
+        \end{array}
+    \right)
+\]
+\newpage
+За да намерим базис на $U \cap W$, трябва да направим ФСР на $U \cap W$.
+Съставяме ФСР с независима променлива $x_5$:
+\[
+    x_1 = -p, \ x_2=p, \ x_3=-p, \ x_4=p, \ x_5=p
+\]
+\begin{center}
+    При $x_5 = 1: (-1, 1, -1, 1, 1)$ \\
+    ФСР на $U \cap W :-x_1 +x_2 - x_3 +x_4 +x_5 =0$\\
+    Базис на $U \cap W:(-1, 1, -1, 1, 1)$
+\end{center}
+\end{document}

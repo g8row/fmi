@@ -1,0 +1,241 @@
+\documentclass{article}
+
+\usepackage{amsmath} 
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[bulgarian,english]{babel}
+%\usepackage[ddmmyyyy]{datetime}
+\usepackage{framed} 
+
+\title{Домашно 2}
+\author{Александър Гуров}
+\date{\datebulgarian{\today}}
+
+\begin{document}
+
+\maketitle
+\section*{Задача 2}
+\begin{align*}
+    \Phi ( x_1 e_1 + x_2 e _2 + x_3 e_3 + x_4 e_4) = & ( 4 x_1 - 3 x_2 + x_3 + 2 x_4) e_1 + ( x_1 - x_2 + x_3 + x_4) e_2 \\
+                                                     & + ( x_1 - 2 x_3 + q x_4) e_3 + ( p x_1 + x_2 -5 x_3 - 3 x_4) e_4
+\end{align*}
+
+Съставяме матрица спрямо $(e_1,e_2,e_3,e_4)$:
+\[
+    \left(\begin{array}{cccc}
+            4 & -3 & 1  & 2  \\
+            1 & -1 & 1  & 1  \\
+            1 & 0  & -2 & q  \\
+            p & 1  & -5 & -3
+        \end{array}\right)
+    \left(\begin{array}{c}
+            v_1 \\
+            v_2 \\
+            v_3 \\
+            v_4
+        \end{array}\right)
+\]
+Намираме базиса на $ker(\Phi)$ чрез векторите с координати $(x_1,x_2,x_3)$ спрямо базиса $(e_1,e_2,e_3)$,
+които са от $ker(\Phi)$, тоест отиват в $\vec{0}$.
+\[
+    \left(\begin{array}{cccc}
+            4 & -3 & 1  & 2  \\
+            1 & -1 & 1  & 1  \\
+            1 & 0  & -2 & q  \\
+            p & 1  & -5 & -3
+        \end{array}\right)
+    \left(\begin{array}{c}
+            v_1 \\
+            v_2 \\
+            v_3 \\
+            v_4
+        \end{array}\right)
+    =0
+\]
+\[
+    \left(\begin{array}{cccc}
+            1 & -1 & 1  & 1  \\
+            4 & -3 & 1  & 2  \\
+            1 & 0  & -2 & q  \\
+            p & 1  & -5 & -3
+        \end{array}\right)
+    \sim\left(\begin{array}{cccc}
+            1 & -1  & 1    & 1    \\
+            0 & 1   & -3   & -2   \\
+            0 & 1   & -3   & q-1  \\
+            0 & 1+p & -p-5 & -p-3
+        \end{array}\right)
+\]
+\[
+    \sim\left(\begin{array}{cccc}
+            1 & -1 & 1    & 1   \\
+            0 & 1  & -3   & -2  \\
+            0 & 0  & 0    & q+1 \\
+            0 & 0  & 2p-2 & p-1
+        \end{array}\right)
+    \sim\left(\begin{array}{cccc}
+            1 & -1 & 1    & 1   \\
+            0 & 1  & -3   & -2  \\
+            0 & 0  & 2p-2 & p-1 \\
+            0 & 0  & 0    & q+1
+        \end{array}\right)
+\]
+\newpage
+\textbf{I-ви случай:} $q=-1, p=1$
+\[
+    \left(\begin{array}{cccc}
+            1 & -1 & 1  & 1  \\
+            0 & 1  & -3 & -2 \\
+            0 & 0  & 0  & 0  \\
+            0 & 0  & 0  & 0
+        \end{array}\right)
+    \sim\left(\begin{array}{cccc}
+            1 & 0 & -2 & -1 \\
+            0 & 1 & -3 & -2 \\
+            0 & 0 & 0  & 0  \\
+            0 & 0 & 0  & 0
+        \end{array}\right)
+\]
+Съставяме ФСР с независими променливи $e_3=m, e_4=n$:
+\[
+    e_1=2m+n, e_2=3m+2n, e_3=m, e_4=n
+\]
+\begin{center}
+    При $m=1:(2,3,1,0)$\\
+    При $n=1:(1,2,0,1)$
+\end{center}
+\begin{align*}
+    \text{Базис на $ker(\Phi):$}
+     & \left(\begin{array}{cccc}
+                     2 & 3 & 1 & 0 \\
+                     1 & 2 & 0 & 1
+                 \end{array}
+    \right)
+\end{align*}
+\[
+    dim(ker(\Phi))+dim(im(\Phi))=m
+\]
+Чрез водещите единици на базиса на $ker(\Phi)$ съставяме базиса на $im(\Phi)$.
+\begin{align*}
+    \text{Базис на $im(\Phi):$}
+     & \left(\begin{array}{cccc}
+                     4  & 1  & 1 & 1 \\
+                     -3 & -1 & 0 & 1
+                 \end{array}
+    \right)
+\end{align*}
+
+\textbf{II-ри случай:} $q\neq-1, p=1$
+\[
+    \left(\begin{array}{cccc}
+            1 & -1 & 1  & 1   \\
+            0 & 1  & -3 & -2  \\
+            0 & 0  & 0  & 0   \\
+            0 & 0  & 0  & q+1
+        \end{array}\right)
+    \sim\left(\begin{array}{cccc}
+            1 & 0 & -2 & -1 \\
+            0 & 1 & -3 & -2 \\
+            0 & 0 & 0  & 0  \\
+            0 & 0 & 0  & 1
+        \end{array}\right)
+    \sim\left(\begin{array}{cccc}
+            1 & 0 & -2 & 0 \\
+            0 & 1 & -3 & 0 \\
+            0 & 0 & 0  & 0 \\
+            0 & 0 & 0  & 1
+        \end{array}\right)
+\]
+Съставяме ФСР с независимa променливa $e_3=m$:
+\[
+    e_1=2m, e_2=3m, e_3=m, e_4=0
+\]
+\begin{center}
+    При $m=1:(2,3,1,0)$\\
+    Базис на $ker(\Phi):(2,3,1,0)$
+\end{center}
+\begin{align*}
+    \text{Базис на $im(\Phi):$}
+     & \left(\begin{array}{cccc}
+                     4  & 1  & 1 & 1  \\
+                     -3 & -1 & 0 & 1  \\
+                     2  & 1  & q & -3
+                 \end{array}
+    \right)
+\end{align*}
+
+\textbf{III-ти случай:} $q=-1, p\neq1$
+\[
+    \left(\begin{array}{cccc}
+            1 & -1 & 1    & 1   \\
+            0 & 1  & -3   & -2  \\
+            0 & 0  & 2p-2 & p-1 \\
+            0 & 0  & 0    & 0
+        \end{array}\right)
+    \sim\left(\begin{array}{cccc}
+            1 & 0 & -2 & -1 \\
+            0 & 1 & -3 & -2 \\
+            0 & 0 & 2  & 1  \\
+            0 & 0 & 0  & 0
+        \end{array}\right)
+    \sim\left(\begin{array}{cccc}
+            1 & 0 & 0 & 0 \\
+            0 & 1 & 1 & 0 \\
+            0 & 0 & 2 & 1 \\
+            0 & 0 & 0 & 0
+        \end{array}\right)
+\]
+Съставяме ФСР с независимa променливa $e_3=m$:
+\[
+    e_1=0, e_2=-m, e_3=m, e_4=-2m
+\]
+\begin{center}
+    При $m=1:(0,-1,1,-2)$\\
+    Базис на $ker(\Phi):(0,-1,1,-2)$
+\end{center}
+\begin{align*}
+    \text{Базис на $im(\Phi):$}
+     & \left(\begin{array}{cccc}
+                     4  & 1  & 1  & p  \\
+                     -3 & -1 & 0  & 1  \\
+                     1  & 1  & -2 & -5
+                 \end{array}
+    \right)
+\end{align*}
+
+\textbf{IV-ти случай:} $q\neq-1, p\neq1$
+\[
+    \left(\begin{array}{cccc}
+            1 & -1 & 1    & 1   \\
+            0 & 1  & -3   & -2  \\
+            0 & 0  & 2p-2 & p-1 \\
+            0 & 0  & 0    & q+1
+        \end{array}\right)
+    \sim\left(\begin{array}{cccc}
+            1 & -1 & 1  & 1  \\
+            0 & 1  & -3 & -2 \\
+            0 & 0  & 2  & 1  \\
+            0 & 0  & 0  & 1
+        \end{array}\right)
+    \sim\left(\begin{array}{cccc}
+            1 & 0 & 0 & 0 \\
+            0 & 1 & 0 & 0 \\
+            0 & 0 & 1 & 0 \\
+            0 & 0 & 0 & 1
+        \end{array}\right)
+\]
+\begin{center}
+    Не съществува базис на $ker(\Phi)$.
+\end{center}
+\begin{align*}
+    \text{Базис на $im(\Phi):$} &
+    \left(\begin{array}{cccc}
+                  4  & 1  & 1  & p  \\
+                  -3 & -1 & 0  & 1  \\
+                  1  & 1  & -2 & -5 \\
+                  2  & 1  & q  & -3
+              \end{array}\right)
+\end{align*}
+
+
+\end{document}
