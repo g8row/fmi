@@ -1,0 +1,206 @@
+\documentclass{article}
+
+\usepackage{amsmath} 
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[bulgarian,english]{babel}
+%\usepackage[ddmmyyyy]{datetime}
+\usepackage{framed} 
+
+\title{Домашно 2}
+\author{Александър Гуров}
+\date{\datebulgarian{\today}}
+
+\begin{document}
+
+\maketitle
+\section*{Задача 4}
+
+Първо ще търсим $\lambda$, за което е вярно $det(A-\lambda E)=0$.
+\begin{align*}
+    A-\lambda E=
+    \left(
+    \begin{array}{ccc}
+        9  & 2  & 14  \\
+        16 & 5  & 28  \\
+        -8 & -2 & -13
+    \end{array}
+    \right)
+    -\lambda E=
+    \left(\begin{array}{ccc}
+              9-\lambda & 2         & 14          \\
+              16        & 5-\lambda & 28          \\
+              -8        & -2        & -13-\lambda
+          \end{array}
+    \right)
+\end{align*}
+\begin{align*}
+    det(A-\lambda E)=
+    \left|\begin{array}{ccc}
+              9-\lambda & 2         & 14          \\
+              16        & 5-\lambda & 28          \\
+              -8        & -2        & -13-\lambda
+          \end{array}
+    \right|
+\end{align*}
+\begin{align*}
+    =(9-\lambda)(5-\lambda)(-13-\lambda)+2.28  & .(-8)  +14.16.(-2)-(9-\lambda).28.(-2)                                \\
+                                               & -14.(5-\lambda).(-8)-2.16.(-13-\lambda)=                              \\
+    =(45-14\lambda+\lambda^2)(-13-\lambda)-44  & 8  -448+(504-56\lambda)+(560-112\lambda)                              \\
+                                               & +(416+32\lambda)                                                      \\
+    =-(585-182\lambda+13\lambda^2+45\lambda-14 & \lambda^2+\lambda^3)  + 584-136\lambda=-1+\lambda+\lambda^2-\lambda^3
+\end{align*}
+\[
+    det(A-\lambda E)=0
+\]
+\[
+    -1+\lambda+\lambda^2-\lambda^3=0
+\]
+\[
+    \text{По метод на Хорнер: }
+    \begin{array}{ccccc}
+           & -1 & 1 & 1 & -1 \\
+        1| & -1 & 0 & 1 & 0
+    \end{array}
+    \implies(\lambda -1)(\lambda ^2-1)=0
+\]
+\[
+    (\lambda -1)^2(\lambda +1)=0 \implies \lambda_1=1, \lambda_2=-1
+\]
+
+\textbf{I-ви случай:} $\lambda=1$
+\[
+    \left(\begin{array}{ccc}
+            9-\lambda & 2         & 14          \\
+            16        & 5-\lambda & 28          \\
+            -8        & -2        & -13-\lambda
+        \end{array}
+    \right)
+    \sim\left(\begin{array}{ccc}
+            9-1 & 2   & 14    \\
+            16  & 5-1 & 28    \\
+            -8  & -2  & -13-1
+        \end{array}
+    \right)
+    \sim\left(\begin{array}{ccc}
+            8  & 2  & 14  \\
+            16 & 4  & 28  \\
+            -8 & -2 & -14
+        \end{array}
+    \right)
+\]
+\[
+    \sim\left(\begin{array}{ccc}
+            8  & 2 & 14 \\
+            16 & 4 & 28 \\
+            0  & 0 & 0
+        \end{array}
+    \right)
+    \sim\left(\begin{array}{ccc}
+            8 & 2 & 14 \\
+            0 & 0 & 0  \\
+            0 & 0 & 0
+        \end{array}
+    \right)
+    \sim\left(\begin{array}{ccc}
+            4 & 1 & 7 \\
+            0 & 0 & 0 \\
+            0 & 0 & 0
+        \end{array}
+    \right)
+\]
+\newpage
+Съставяме ФСР с независими променливи $x_1=m, x_2=n$:
+\[
+    x_1=m, x_2=n, x_3=\frac{-4m-n}{7}
+\]
+\[
+    \text{При } m=1: (1, 0, \frac{-4}{7})
+\]
+\[
+    \text{При } n=1: (0, 1, \frac{-1}{7})
+\]
+
+\textbf{II-ри случай:} $\lambda=-1$
+\[
+    \left(\begin{array}{ccc}
+            9-\lambda & 2         & 14          \\
+            16        & 5-\lambda & 28          \\
+            -8        & -2        & -13-\lambda
+        \end{array}
+    \right)
+    \sim\left(\begin{array}{ccc}
+            9+1 & 2   & 14    \\
+            16  & 5+1 & 28    \\
+            -8  & -2  & -13+1
+        \end{array}
+    \right)
+    \sim\left(\begin{array}{ccc}
+            10 & 2  & 14  \\
+            16 & 6  & 28  \\
+            -8 & -2 & -12
+        \end{array}
+    \right)
+\]
+\[
+    \sim\left(\begin{array}{ccc}
+            5  & 1  & 7  \\
+            8  & 3  & 14 \\
+            -4 & -1 & -6
+        \end{array}
+    \right)
+    \sim\left(\begin{array}{ccc}
+            0  & -\frac{1}{4} & -\frac{1}{2} \\
+            0  & 1            & 2            \\
+            -4 & -1           & -6
+        \end{array}
+    \right)
+    \sim\left(\begin{array}{ccc}
+            -4 & -1 & -6 \\
+            0  & 1  & 2  \\
+            0  & -1 & -2
+        \end{array}
+    \right)
+\]
+\[
+    \sim\left(\begin{array}{ccc}
+            -4 & 0 & -4 \\
+            0  & 1 & 2  \\
+            0  & 0 & 0
+        \end{array}
+    \right)
+    \sim\left(\begin{array}{ccc}
+            1 & 0 & 1 \\
+            0 & 1 & 2 \\
+            0 & 0 & 0
+        \end{array}
+    \right)
+\]
+Съставяме ФСР с независимa променливa $x_3=m$:
+\[
+    x_1=-m, x_2=-2m, x_3=m
+\]
+\[
+    \text{При } m=1: (-1, -2, 1)
+\]
+\begin{align*}
+    \text{Базис от собствени вектори на }V=
+    \left(\begin{array}{ccc}
+                  7  & 0  & -4 \\
+                  0  & 7  & -1 \\
+                  -1 & -2 & 1
+              \end{array}
+    \right)
+\end{align*}
+\begin{align*}
+    \text{Диагонална матрица на $V$: }D=
+    \left(\begin{array}{ccc}
+                  1 & 0 & 0  \\
+                  0 & 1 & 0  \\
+                  0 & 0 & -1
+              \end{array}
+    \right)
+\end{align*}
+
+
+\end{document}
