@@ -1,0 +1,225 @@
+\documentclass{article}
+
+\usepackage{amsmath} 
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[bulgarian,english]{babel}
+%\usepackage[ddmmyyyy]{datetime}
+\usepackage{framed} 
+
+\title{Домашно 2}
+\author{Александър Гуров}
+\date{\datebulgarian{\today}}
+
+\begin{document}
+
+\maketitle
+\section*{Задача 3}
+
+От дефинициите на линейните изображения съставяме матрици:
+\[
+    \theta : U \longrightarrow V,
+\]
+\[
+    \theta ( x_1 e_1 + x_2 e_2 + x_3 e_3) = ( 2 x_1 + 3 x_2 - x_3) f_1 + ( x_1 - 2 x_2 - x_3) f_2, \ \ \forall x_1, x_2, x_3 \in F,
+\]
+\[
+    \text{Матрица на $\theta$: }
+    A=
+    \left(\begin{array}{ccc}
+            2 & 3  & -1 \\
+            1 & -2 & -1
+        \end{array}
+    \right)
+\]
+
+\[
+    \varphi : U \longrightarrow U,
+\]
+\begin{align*}
+    \varphi ( x_1 e_1 + x_2 e_2 + x_3 e_3) = ( x _1 - x_2 + 2 x_3) e_1 + ( 3 x_1 + x_2 - x_3) e_2 + & ( 2 x_1 + x_2 + x_3) e_3,   \\
+                                                                                                    & \forall x_1, x_2, x_3 \in F
+\end{align*}
+\[
+    \text{Матрица на $\varphi$: }
+    B=
+    \left(\begin{array}{ccc}
+            1 & -1 & 2  \\
+            3 & 1  & -1 \\
+            2 & 1  & 1
+        \end{array}
+    \right)
+\]
+
+\[
+    \psi : V \longrightarrow V,
+\]
+\[
+    \psi ( y_1 f_1 + y_2 f_2) = ( 5 y_1 - y_2) f_1 + ( 2 y_1 - 4 y_2) f_2, \ \ \forall y_1, y_2 \in F
+\]
+\[
+    \text{Матрица на $\psi$: }
+    C=
+    \left(\begin{array}{cc}
+            5 & -1 \\
+            2 & -4
+        \end{array}
+    \right)
+\]
+\newpage
+\[
+    \text{Търсим векторите $u\in U$, за които е вярно}( \psi \theta - \theta \varphi) (u) = f_1
+\]
+\[
+    u\in U \implies u = x.e = (x_1e_1,x_2e_2) = x_1e_1+x_2e_2
+\]
+\begin{center}
+    $( \psi \theta - \theta \varphi) (u) =\theta(\psi(u)) -  \varphi(\theta(u)) = \theta(\psi(ex)) -  \varphi(\theta(ex))$
+    $= (f.A_{\psi\theta}-f.A_{\theta\varphi}).x = f.x.(A_\psi A_\theta-A_\theta A_\varphi)=$\\
+    $=f.x.(CA-AB)$
+\end{center}
+\begin{center}
+    $( \psi \theta - \theta \varphi) (u) = f_1$\\
+    $f.x.(CA-AB) = f\left(\begin{array}{c}
+                1 \\
+                0
+            \end{array}\right)$\\
+    $x=\left(\begin{array}{c}
+            1 \\
+            0
+        \end{array}\right)(CA-AB)^{-1}$
+\end{center}
+\[
+    CA=
+    \left(\begin{array}{cc}
+            5 & -1 \\
+            2 & -4
+        \end{array}
+    \right)\left(\begin{array}{ccc}
+            2 & 3  & -1 \\
+            1 & -2 & -1
+        \end{array}
+    \right)\sim
+    \left(\begin{array}{ccc}
+            9 & 17 & -4 \\
+            0 & 14 & 2
+        \end{array}
+    \right)
+\]
+\[
+    AB=
+    \left(\begin{array}{ccc}
+            2 & 3  & -1 \\
+            1 & -2 & -1
+        \end{array}
+    \right)
+    \left(\begin{array}{ccc}
+            1 & -1 & 2  \\
+            3 & 1  & -1 \\
+            2 & 1  & 1
+        \end{array}
+    \right)\sim
+    \left(\begin{array}{ccc}
+            9  & 0  & 0 \\
+            -7 & -4 & 3
+        \end{array}
+    \right)
+\]
+\[
+    CA-AB=
+    \left(\begin{array}{ccc}
+            0 & 17 & -4 \\
+            7 & 10 & -1
+        \end{array}
+    \right)
+\]
+\[
+    (CA-AB)^{-1}=
+    \left(\begin{array}{ccc}
+            7 & 10 & -1 \\
+            0 & 17 & -4 \\
+            0 & 0  & 1
+        \end{array}\left|
+    \begin{array}{ccc}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1
+        \end{array}\right.
+    \right)
+    \sim
+    \left(\begin{array}{ccc}
+            7 & 10 & -1 \\
+            0 & 17 & 0  \\
+            0 & 0  & 1
+        \end{array}\left|
+    \begin{array}{ccc}
+            1 & 0 & 0 \\
+            0 & 1 & 4 \\
+            0 & 0 & 1
+        \end{array}\right.
+    \right)
+\]
+\[
+    \sim
+    \left(\begin{array}{ccc}
+            7 & 10 & -1 \\
+            0 & 1  & 0  \\
+            0 & 0  & 1
+        \end{array}\left|
+    \begin{array}{ccc}
+            1 & 0            & 0            \\
+            0 & \frac{1}{17} & \frac{4}{17} \\
+            0 & 0            & 1
+        \end{array}\right.
+    \right)
+    \sim
+    \left(\begin{array}{ccc}
+            7 & 0 & -1 \\
+            0 & 1 & 0  \\
+            0 & 0 & 1
+        \end{array}\left|
+    \begin{array}{ccc}
+            1 & \frac{-10}{17} & \frac{-40}{17} \\
+            0 & \frac{1}{17}   & \frac{4}{17}   \\
+            0 & 0              & 1
+        \end{array}\right.
+    \right)
+\]
+\[
+    \sim
+    \left(\begin{array}{ccc}
+            7 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1
+        \end{array}\left|
+    \begin{array}{ccc}
+            1 & \frac{-10}{17} & \frac{-23}{17} \\
+            0 & \frac{1}{17}   & \frac{4}{17}   \\
+            0 & 0              & 1
+        \end{array}\right.
+    \right)
+    \sim
+    \left(\begin{array}{ccc}
+            1 & 0 & 0 \\
+            0 & 1 & 0 \\
+            0 & 0 & 1
+        \end{array}\left|
+    \begin{array}{ccc}
+            \frac{1}{7} & \frac{-10}{119} & \frac{-23}{119} \\
+            0           & \frac{1}{17}    & \frac{4}{17}    \\
+            0           & 0               & 1
+        \end{array}\right.
+    \right)
+\]
+\[
+    x=\left(\begin{array}{ccc}
+            1 \\
+            0 \\
+        \end{array}\right)
+    \left(\begin{array}{ccc}
+            \frac{1}{7} & \frac{-10}{119} & \frac{-23}{119} \\
+            0           & \frac{1}{17}    & \frac{4}{17}    \\
+            0           & 0               & 1
+        \end{array}\right)
+\]
+\end{document}

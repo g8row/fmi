@@ -82,14 +82,14 @@
             -8  & -2  & -13-1
         \end{array}
     \right)
-    \sim\left(\begin{array}{ccc}
-            8  & 2  & 14  \\
-            16 & 4  & 28  \\
-            -8 & -2 & -14
-        \end{array}
-    \right)
 \]
 \[
+    \sim\left(\begin{array}{ccc}
+8  & 2  & 14  \\
+16 & 4  & 28  \\
+-8 & -2 & -14
+\end{array}
+\right)
     \sim\left(\begin{array}{ccc}
             8  & 2 & 14 \\
             16 & 4 & 28 \\
@@ -110,15 +110,15 @@
     \right)
 \]
 \newpage
-Съставяме ФСР с независими променливи $x_1=m, x_2=n$:
+Съставяме ФСР с независими променливи $x_2=m, x_3=n$:
 \[
-    x_1=m, x_2=n, x_3=\frac{-4m-n}{7}
+x_1=\frac{-m-7n}{4}, x_2=m, x_3=n
 \]
 \[
-    \text{При } m=1: (1, 0, \frac{-4}{7})
+\text{При } m=1: (\frac{-1}{4}, 1, 0)
 \]
 \[
-    \text{При } n=1: (0, 1, \frac{-1}{7})
+\text{При } n=1: (\frac{-7}{4}, 0, 1)
 \]
 
 \textbf{II-ри случай:} $\lambda=-1$
@@ -135,15 +135,15 @@
             -8  & -2  & -13+1
         \end{array}
     \right)
-    \sim\left(\begin{array}{ccc}
-            10 & 2  & 14  \\
-            16 & 6  & 28  \\
-            -8 & -2 & -12
-        \end{array}
-    \right)
 \]
 \[
     \sim\left(\begin{array}{ccc}
+10 & 2  & 14  \\
+16 & 6  & 28  \\
+-8 & -2 & -12
+\end{array}
+\right)
+\sim\left(\begin{array}{ccc}
             5  & 1  & 7  \\
             8  & 3  & 14 \\
             -4 & -1 & -6
@@ -154,13 +154,7 @@
             0  & 1            & 2            \\
             -4 & -1           & -6
         \end{array}
-    \right)
-    \sim\left(\begin{array}{ccc}
-            -4 & -1 & -6 \\
-            0  & 1  & 2  \\
-            0  & -1 & -2
-        \end{array}
-    \right)
+\right)
 \]
 \[
     \sim\left(\begin{array}{ccc}
@@ -175,6 +169,12 @@
             0 & 0 & 0
         \end{array}
     \right)
+\sim\left(\begin{array}{ccc}
+    -4 & -1 & -6 \\
+    0  & 1  & 2  \\
+    0  & -1 & -2
+\end{array}
+\right)
 \]
 Съставяме ФСР с независимa променливa $x_3=m$:
 \[
@@ -183,13 +183,14 @@
 \[
     \text{При } m=1: (-1, -2, 1)
 \]
+
 \begin{align*}
-    \text{Базис от собствени вектори на }V=
+\text{Базис от собствени вектори на }V=
     \left(\begin{array}{ccc}
-                  7  & 0  & -4 \\
-                  0  & 7  & -1 \\
-                  -1 & -2 & 1
-              \end{array}
+-1 & 4  & 0 \\
+-7 & 0  & 4 \\
+-1 & -2 & 1
+\end{array}
     \right)
 \end{align*}
 \begin{align*}
@@ -201,6 +202,4 @@
               \end{array}
     \right)
 \end{align*}
-
-
 \end{document}
