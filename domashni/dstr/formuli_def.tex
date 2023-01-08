@@ -1,0 +1,74 @@
+\documentclass{article}
+
+\usepackage{amsmath} 
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[bulgarian,english]{babel}
+\usepackage{amssymb}
+\title{Формули и дефиниции}
+\author{Александър Гуров}
+\date{\datebulgarian{\today}}
+
+\begin{document}
+\maketitle
+\section{Обикновени графи}
+
+\begin{itemize}
+    \item[] \underline{\textbf{Def:}} Граф $G=(V,E), E\subseteq\{X\subseteq V: |X|=2\} $
+
+    \item[] Празен граф: $E=\varnothing $
+
+    \item[] Тривиален граф: $|V|=1$
+
+    \item[] \underline{\textbf{Def:}} Ако $\exists e=(u,v)\in E$, то u и v са \underline{съседи}
+
+    \item[] Ако $e_1\cap e_2 = \varnothing$, то $e_1$ и $e_2$ са \underline{инцидентни}
+
+    \item[] \underline{\textbf{Def:}}$N(u)=\{ v\in V | u \text{ и } v \text{ са съседи}\}$
+
+    \item[] \underline{\textbf{Def:}}$N[u]=N(u)\cup \{u\}$
+
+    \item[] \underline{\textbf{Def:}}$\mathcal{J}(u)=\{ e\in E | e \text{ е инцидентно с } u \}$
+
+    \item[] Степен на връх: $d(u)= |\mathcal{J}(u)|$
+
+    \item[] $\Delta (G)= max\{d(u) |  u\in V\}$
+
+    \item[] $\delta(G)= min\{d(u) |  u\in V\}$
+
+    \item[] \underline{\textbf{Максимална степен на връх}} $\Delta(u)\leq n-1$
+
+    \item[] \underline{\textbf{Лема 1:}} $\sum_{u\in V}d(u)=2m$
+
+    \item[] \underline{\textbf{Лема 2}} - \emph{the handshake lemma}: \\ $\forall G(V,E) \text{ с поне 2 върха, } \exists u,v\in V, u \neq v: d(u)=d(v)$
+
+    \item[] G е \textbf{k-регулярен}, ако $\forall u\in V: d(u)=k$
+
+    \item[] G е \textbf{пълен граф}, ако има всички възможни ребра при даденото множеството върхове
+
+    \item[] $K_n$ е пълен граф на n върха, и е (n-1)-регулярен
+
+    \item[] $K_n$ има точно $\binom{n}{2}$ ребра
+
+    \item[] Подграф на $G$, \emph{индуциран} от $E'$, e $G'(U, E')$, където $E'\subseteq E$,\\ $U=\{u\in V|\exists e \in E', \exists x \in V:e=(u,x)\}$
+
+    \item[] Подграф на $G$, \emph{индуциран} от $U$, e $G'(U, E')$, където $U\subseteq V$,\\ $E'=\{e\in E|\exists u,v \in U:e=(u,v)\}$
+
+    \item[] Клика е подмножество от $V$, между чиито всеки два върха има ребро. К-клика е клика с к-върха.
+
+    \item[] Антилика е подмножество от $V$, между чиито никои два върха няма ребро
+
+    \item[] $\omega (G)$ - Кликово число е мощността на максималната клика в $G$
+
+    \item[] $\alpha (G)$ - Число на независимост е мощността на максималната \\ антиклика в $G$
+
+    \item[] $\bar{G}(V,E')$ е допълнението на $G$, където $E'=\{(u,v)|u,v\in V, u\neq v\} \setminus E$
+
+    \item[] $\omega (G) = \alpha (\bar{G})$
+
+    \item[] \underline{\textbf{Теорема 1:}} Нека $G(V,E)$ има поне 6 върха. В $G$ има поне 3-клика или 3-антиклика
+\end{itemize}
+
+\section{Неориентирани мултиграфи}
+
+\end{document}
