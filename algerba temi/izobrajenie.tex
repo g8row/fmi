@@ -1,0 +1,75 @@
+\documentclass{article}
+
+\usepackage{amsmath} 
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[bulgarian,english]{babel}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+
+\newcommand*{\nullvec}{\vec{\mathcal{O}}}
+
+\title{15. Матрица на линейно изображение на крайномерни пространства. Смяна на базис. 
+Трансформация на матрицата на линейно изображение при смяна на базисите. Подобни матрици}
+\author{Александър Гуров}
+\date{\datebulgarian{\today}}
+\newcommand{\dok}{\underline{Доказателство}}
+\newcommand{\tvurdenie}[2]{
+    \begin{tcolorbox}[title = #1 ,colframe = blue!70!black, colback = blue!10!white]
+        #2
+    \end{tcolorbox}
+}
+\newcommand{\opredelenie}[2]{
+    \begin{tcolorbox}[title = #1 ,colframe = red!70!black, colback = red!10!white]
+        #2
+    \end{tcolorbox}
+}
+\newcommand{\primer}[2]{
+    \begin{tcolorbox}[title = #1 ,colframe = blue!70!black, colback = blue!10!white]
+        #2
+    \end{tcolorbox}
+}
+
+\begin{document}
+\maketitle
+
+\tvurdenie{Лема 15.2 (\emph{Матричен запис на линейно изображение})}{
+Нека $\varphi : U \rightarrow V$ е линейно изображение, $u=(u_1,...,u_m)$ е наредена m-торка, съставена от вектори $u_1,...,u_m\in U$, и
+$A=(a_{i,j})_{i=1j=1}^{m \ \ n} \in M_{m\times n}(F)$. тогава
+\[
+    \varphi(uA)=\varphi(u)A
+\]
+за
+\[
+    uA:=(v_1,...,v_n), \ v_i=(u_1,...,u_m)\left(\begin{array}{c}
+            a_{1j} \\
+            a_{2j} \\
+            \dots  \\
+            a_{mj}
+        \end{array}\right)=\sum_{i=1}^{m}a_{ij}u_i,
+\]
+\[
+    \varphi(uA):=\varphi(v_1,...,v_n)=(\varphi(v_1),...,\varphi(v_m)) \text{ и } \varphi(u)=(\varphi(u_1),...,\varphi(u_m))
+\]
+}
+\dok \ От равенството на j-тия стълб на $\varphi(uA)$ и j-тия стълб на $\varphi(u)A$:
+\[
+    \varphi(v_j)=\varphi\left(\sum_{i=1}^{m}a_{ij}u_i\right)=\sum_{i=1}^{m}a_{ij}\varphi(u_i)=(\varphi(u_1),..,\varphi(u_m))\left(\begin{array}{c}
+            a_{1j} \\
+            a_{2j} \\
+            \dots  \\
+            a_{mj}
+        \end{array}\right)
+\]
+за всяко $1\leq j\leq n$.
+\opredelenie{Определение 15.2}{
+    Нека $\varphi: U\rightarrow V$ е линейно изображение, векторите $e_1,...,e_n$ образуват базис на
+    линейното пространство U над поле F, векторите $f_1,...,f_n$ образуват базис на линейното
+    пространство V над поле F. Матрицата:
+    \[
+        A=(\varphi(e_1),...,\varphi(e_n))\in M_{m\times n}(F)
+    \]
+}
+
+
+\end{document}
