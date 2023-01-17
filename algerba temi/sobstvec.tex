@@ -1,0 +1,257 @@
+\documentclass{article}
+
+\usepackage{amsmath} 
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[bulgarian,english]{babel}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+
+\newcommand*{\nullvec}{\vec{\mathcal{O}}}
+
+\title{18. Собствени вектори и инвариантни
+подпространства на линеен оператор.}
+\author{Александър Гуров}
+\date{\datebulgarian{\today}}
+
+\newcommand{\dok}{\underline{Доказателство}\  }
+
+\newcommand{\tvurdenie}[2]{
+    \begin{tcolorbox}[title = #1 ,colframe = blue!70!black, colback = blue!10!white]
+        #2
+    \end{tcolorbox}
+}
+\newcommand{\opredelenie}[2]{
+    \begin{tcolorbox}[title = #1 ,colframe = red!70!black, colback = red!10!white]
+        #2
+    \end{tcolorbox}
+}
+\newcommand{\primer}[2]{
+    \begin{tcolorbox}[title = #1 ,colframe = blue!70!black, colback = blue!10!white]
+        #2
+    \end{tcolorbox}
+}
+
+\begin{document}
+\maketitle
+
+\opredelenie{Определение 18.1}{
+    Характеристичният полином на квадратна матрица $A \in M_{n\times n}(F)$ от ред $n$ е
+    \[
+        f_A(x)=det(A-xE_n)=\left|\begin{array}{cccc}
+            a_{11}-x & a_{12}   & \dots & a_{1n}   \\
+            a_{21}   & a_{22}-x & \dots & a_{2n}   \\
+            \dots    & \dots    & \dots & \dots    \\
+            a_{n1}   & a_{n2}   & \dots & a_{nn}-x \\
+        \end{array}
+        \right|
+    \]
+    \[
+        = (-1)^nx^n + (-1)^{n-1}(a_{11} + a_{22} + ... + a_{nn})x^{n-1} + ... + det(A).
+    \]
+    Корените на $f_A(x) = 0$ се наричат характеристични корени на A.
+}
+\tvurdenie{Лема 19.2}{
+    Ако $A \in M_{n\times n}(F)$) и $B = T^{-1}AT  \in M_{n\times n}(F)$ са подобни
+    матрици, то характеристичните полиноми $f_A(x) = f_B(x)$ на A и B
+    съвпадат.
+}
+\dok
+\[
+    f_B(x)=det(B-xE_n)=det(T^{-1}AT-T^{-1}(xE_n)T)
+\]
+\[
+    =det(T^{-1})det(A-xE_n)det(T)=det(T^{-1}T)det(A-xE_n)
+\]
+\[
+    =det(E_n)det(A-xE_n)=det(A-xE_n)=f_A(x)
+\]
+\opredelenie{Определение 18.3}{
+    Нека $\varphi : V \rightarrow V$ е линеен оператор в крайномерно пространство V над поле F.
+    Характеристичният полином на матрицата на $\varphi$ спрямо един, а оттам и всеки един базис
+    на V се нарича характеристичен полином на $\varphi$ и се бележи с $f_{\varphi}(x)$.
+    Характеристичните корени на $\varphi$ са корените на $f_{\varphi}(x)$.
+}
+\opredelenie{Определение 18.4}{
+    Собствен вектор на линеен оператор $\varphi : V \rightarrow V$
+    е ненулев вектор $v \in V \setminus \{\nullvec_V\}$ с $\varphi(v) = \lambda v$ за някое $\lambda \in F$. Казваме,
+    че $\lambda$ е собствена стойност на $\varphi$, отговаряща на собствения вектор v.
+}
+\tvurdenie{Лема 18.5}{
+    Нека $\varphi : V \rightarrow V$ е линеен оператор в крайномерно
+    линейно пространство V над поле F. Тогава собствените стойности
+    на $\varphi$ съвпадат с характеристичните корени на $\varphi$ от F.
+}
+
+\dok Хомогенна система линейни уравнения $Mx=\mathbb{O}_{n\times 1}$ с квадратна матрица
+коефициенти $M\in M_{n\times n}(F)$ има ненулево решение тогава и само тогава, когато
+размерността на пространството е $n-rk(M)>0$, еквивалентно на $rk(m)<n$, което е
+изпълнено единствено при $det(M)=0$.
+
+Нека $e = (e_1, ... , e_n)$ е базис на $V$ и $A \in M_{n\times n}(F)$ е матрицата на $\varphi$ спрямо
+базиса $e$ на V. За произволен ненулев вектор $v \in V \setminus \{\nullvec_V \}$ с координати
+$x \in M_{n\times 1}(F) \setminus {\mathbb{O}_{n\times 1}}$ спрямо базиса $e$ е вярно
+$\varphi(v) = \varphi(ex) = \varphi(e)x = (eA)x = e(Ax)$. Следователно v е собствен вектор на $\varphi$,
+отговарящ на собствена стойност $\lambda \in F$ тогава и само тогава, когато
+\[
+    e(Ax)=\varphi(x)=\lambda v=\lambda(ex)=e(\lambda x)
+\]
+По Лема 15.3 (ii) и свойствата на единичната матрица $E_n \in M_{n\times n}(F)$, горното е
+еквивалентно на $Ax = \lambda x = \lambda(E_nx) = (\lambda E_n)x$ и е в сила точно когато хомогенната
+система линейни уравнения $(A-\lambda E_n)x = Ax-(\lambda E_n)x = O_{n\times 1}$
+има ненулево решение $x \in M_{n\times 1}(F)\setminus{O_{n\times 1}}$. Последното условие е
+равносилно на $0 = det(A - \lambda E_n) = fA(\lambda)$ на детерминантата на матрицата от
+коефициенти $A-\lambda E_n \in M_{n\times n}(F)$, която съвпада със стойността
+$f_\varphi(\lambda) = fA(\lambda) = 0$ на характеристичния полином $f_\varphi(x)$ на $\varphi$ в $\lambda\in F$.
+По този начин установихме, че $\lambda \in F$ е собствена стойност на $\varphi$ тогава и само тогава,
+когато $\lambda$ е характеристичен корен на $\varphi$, който принадлежи на F.
+
+\tvurdenie{Твърдение 18.6}{
+    Нека $\lambda_1, ... , \lambda_n$ са различни собствени стойности на
+    линеен оператор $\varphi : V \rightarrow V$ в пространство V над поле F. За всяко
+    $1 \leq i \leq n$ да предположим, че $v_{i,1}, ... , v{i,k_i} \in V$ са линейно независими
+    собствени вектори на $\varphi$, отговарящи на собствената стойност $\lambda_i$.
+    Тогава системата вектори
+    \[
+        {v_{i,j} | 1 \leq j \leq k_i, 1 \leq i \leq n}
+    \]
+    е линейно независима.
+    В частност, ако $v_1, ... , v_n$ са собствени вектори на $\varphi$, отговарящи
+    на различни собствени стойности $\lambda_1, ... , \lambda_n$, то $v_1, ... , v_n$ са линейно
+    независими, защото всеки от тези собствени вектори е ненулев, а оттам и линейно независим.
+}
+\dok С индукция по броя $n$ на собствените стойности  на
+$\varphi$ - $\lambda_1, ... , \lambda_n$, за $n = 1$ твърдението е изпълнено. В общия случай:\\
+Да разгледаме линейна комбинация
+\begin{equation}\label{1}
+    \sum_{i=1}^{n} \sum_{j=1}^{k_i}  \mu_{i,j}  v_{i,j} = \nullvec_V
+\end{equation}
+След действието на $\varphi$ имаме
+\begin{equation}\label{2}
+    \sum_{i=1}^{n} \sum_{j=1}^{k_i}  \mu_{i,j} \lambda_i v_{i,j} = \nullvec_V
+\end{equation}
+съгласно $\varphi(v_{i,j}) = \lambda_i v_{i,j}$ и $\varphi(\nullvec_V) = \nullvec_V$.
+За да елиминираме $v_{n,1}, ... , v_{n,k_n}$, умножаваме (\ref*{1}) с $-\lambda n$ и прибавяме към (\ref*{2}). Получаваме
+\[
+    \nullvec_V = \sum_{i=1}^{n} \sum_{j=1}^{k_i}  \mu_{i,j} (\lambda_i-\lambda_n) v_{i,j}
+    - \sum_{i=1}^{n-1} \sum_{j=1}^{k_i}  \mu_{i,j} (\lambda_i-\lambda_n) v_{i,j}
+\]
+По индукционно предположение, системата $\{v_{i,j} | 1 \leq i \leq n - 1, 1 \leq j \leq k_i\}$ е
+линейно независима, така че
+\[
+    \mu_{i,j}(\lambda_i-\lambda_n)=0 \text{ за всички } 1 \leq i \leq n - 1 \text{ и } 1 \leq j \leq k_i
+\]
+Съгласно $\lambda_i-\lambda_n\neq 0$ за $1 \leq i \leq n - 1$, стигаме до извода, че $\mu_{i,j}=0$
+за всички1 $1 \leq i \leq n - 1$ и $1 \leq j \leq k_i$. Сега (\ref*{1}) приема вида
+\[
+    \sum_{j=1}^{k_n}\mu_{n,j}v_{n,j}=\nullvec_V
+\]
+Съгласно линейната независимост на $v_{n,1}, ... , v_{n,k_n}$, коефициентите $\mu_{n,j} = 0$ се
+анулират за всички $1 \leq i \leq k_n$. Това доказва линейната независимост на
+\[
+    {v_{i,j} | 1 \leq j \leq k_i, 1 \leq i \leq n}.
+\]
+\opredelenie{Определение 18.7}{
+    (i) Спектърът на матрица $A \in M_{n\times n}(F)$ е множеството на характеристичните корени
+    на A от основното поле F. Ако A има n различни характеристични корена от F, то казваме, че
+    A има прост спектър.\\
+    (ii) Спектърът на линеен оператор $\varphi : V \rightarrow V$ в n-мерно пространство
+    V над поле F е множеството на характеристичните корени на $\varphi$ от
+    F или, еквивалентно, множеството на собствените стойности на $\varphi$.
+    Ако $\varphi$ има n различни характеристични корена от F, то казваме, че
+    $\varphi$ има прост спектър.
+}
+\tvurdenie{Твърдение 18.8}{
+    (i) Нека $\varphi : V \rightarrow V$ е линеен оператор с прост спектър в n-мерно пространство
+    V над поле F. Тогава съществува базис $v_1, ... , v_n$ на V, в който матрицата
+    на $\varphi$ е диагонална. Еквивалентно, съществува базис на V, съставен от
+    собствени вектори за  $\varphi$. \\
+    (ii) Нека  $A \in M_{n\times n}(F)$ е матрица с прост спектър. Тогава съществува
+    обратима матрица  $T \in M_{n\times n}(F)$, така че $D = T^{-1}AT$ е диагонална.
+}
+\dok(i) По определение, $\varphi$ е оператор с прост спектър, ако
+има n различни характеристични корена $\lambda_1, ... , \lambda_n$ от F. Съгласно Твърдение
+18.5, $\lambda_1, . . . , \lambda_n$ са собствени стойности на $\varphi$. Ако $v_i$ са собствени
+вектори на  $\varphi : V \rightarrow V$ , отговарящи на собствените стойности $\lambda_i$
+, то $v_1, ... , v_n$ са линейно независими по Твърдение 18.6. Прилагаме Твърдение 5.12 към
+линейно независимите вектори $v_1, ... , v_n$ от n-мерното пространство V и получаваме, че
+$v_1, ... , v_n$ е базис на V .
+Съгласно $\varphi(v_i) = \lambda_iv_i = 0.v_1+...+0.v_{i-1}+\lambda_i.v_i+0.v_{i+1}+... + 0.v_n$ за всяко $1 \leq i \leq n$, матрицата на $\varphi$ в базиса $v_1, ... , v_n$ е диагонална
+и диагоналните и елементи са равни на съответните собствени стойности,
+\[
+    D=\left(\begin{array}{cccc}
+            \lambda_1 & 0         & \dots & 0         \\
+            0         & \lambda_2 & \dots & 0         \\
+            \dots     & \dots     & \dots & \dots     \\
+            0         & 0         & \dots & \lambda_n
+        \end{array}\right)
+\]
+и диагоналните елементи са равни на съответните собствени стойности.
+
+(ii) Нека $e = (e_1, . . . , e_n)$ е базис на n-мерно пространство V над F, а $\varphi : V \rightarrow V$
+е линейният оператор с матрица $A \in M_{n\times n}(F)$ спрямо базиса e. Тогава $\varphi$ има
+прост спектър и съгласно (i) съществува базис $v = (v_1, . . . , v_n)$ на V , в който
+матрицата на $\varphi$ е диагонална,
+
+\[
+    D=\left(\begin{array}{cccc}
+            \lambda_1 & 0         & \dots & 0         \\
+            0         & \lambda_2 & \dots & 0         \\
+            \dots     & \dots     & \dots & \dots     \\
+            0         & 0         & \dots & \lambda_n
+        \end{array}\right)
+\]
+Матрицата на прехода $T \in M_{n\times n}(F)$ от базиса e към базиса $v = eT$ е обратима
+\[
+    D=T^{-1}AT
+\]
+
+\opredelenie{Определение 18.9}{
+    Подпространство W на линейно пространство
+    V е инвариантно относно линеен оператор $\varphi : V \rightarrow V$ , ако $\varphi(W) \subseteq W$.
+}
+\tvurdenie{Лема 18.10}{
+    Нека $\varphi : V \rightarrow V$ е линеен оператор в линейно пространство V над поле F.\\
+    (i) За всяко $\lambda\in F$ множеството $U_\lambda = \{v \in V | \  \varphi(v) = \lambda v\}$ е $\varphi$-
+    инвариантно подпространство на V . Ако $\lambda$ е собствена стойност на
+    $\varphi$, то $U\lambda$ е обединението на собствените вектори на $\varphi$, отговарящи на
+    собствената стойност $\lambda$ и нулевия вектор на V . Ако $\lambda$ не е собствена
+    стойност на $\varphi$, то $U_\lambda = \{\nullvec\}$ е нулевото подпространство.\\
+    (ii) Ненулев вектор $v \in V \setminus \{\nullvec_V \}$ поражда 1-мерно $\varphi$-инвариантно
+    подпространство $l(v)$ на $V$ тогава и само тогава, когато $v$ е собствен
+    вектор на оператора $\varphi$.
+}
+\dok (i) Подмножеството $U_\lambda = \{v \in V | \ \varphi(v) = \lambda v\}$ на V e
+подпространство на V , защото за произволни $u_1, u_2 \in U_\lambda$ и $\mu \in F$ е в сила
+$u_1 + u_2, \mu u_1 \in U_\lambda$, съгласно
+\[
+    \varphi(u_1 + u_2) = \varphi(u_1) + \varphi(u_2) = \lambda u_1 + \lambda u_2 = \lambda(u_1 + u_2) \text{ и}
+\]
+\[
+    \varphi(\mu u_1) = \mu\varphi(u_1) = (\mu\lambda) u_1 = (\lambda\mu) u_1 = \lambda(\mu u_1)
+\]
+Подпространството $U_\lambda$ на $V$ е $\varphi$-инвариантно, защото за произволен вектор
+$u \in U_\lambda$ е изпълнено $\varphi(u) = \lambda u \in U_\lambda$.\\
+(ii) Ако 1-мерното подпространство $l(v)$ на $V$ е $\varphi$-инвариантно, то ненулевият
+вектор $v \in V \setminus \{\nullvec_V \}$ се изобразява в $\varphi(v) \in l(v)$, така че
+$\varphi(v) = \lambda v$ за някое $\lambda \in F$ и $v$ е собствен вектор на $\varphi$,
+отговарящ на собствена стойност $\lambda$. Обратно, ако $v \in V \ {\nullvec_V }$ е собствен вектор
+на $\varphi$, отговарящ на собствена стойност $\lambda$, то произволен вектор $\mu v \in l(v)$ се
+изобразява в $\varphi(\mu v) = \mu\varphi(v) =\mu(\lambda v) = (\mu\lambda)v \in l(v)$ и 1-мерното подпространство $l(v)$ на $V$ е $\varphi$-инвариантно.
+\newpage
+Приемаме без доказателство следната
+\tvurdenie{Теорема 18.11 (\emph{Основна Теорема на алгебрата})}{
+    Всички корени на непостоянен полином $f(x) \in \mathbb{C}[x] \setminus \mathbb{C}$ с
+    комплексни коефициенти са комплексни числа $\alpha \in \mathbb{C}$.
+}
+\tvurdenie{Твърдение 18.12}{
+    Всеки линеен оператор $\varphi : V \rightarrow V$ в крайномерно
+    линейно пространство V над полето $\mathbb{C}$ на комплексните числа има
+    1-мерно $\varphi$-инвариантно подпространство.
+}
+\tvurdenie{Твърдение 18.13}{
+    Всеки линеен оператор $\varphi : V \rightarrow V$ в крайномерно
+    пространство V над полето на реалните числа $\mathbb{R}$ има 1-мерно или
+    2-мерно $\varphi$-инвариантно подпространство.
+}
+\end{document}
