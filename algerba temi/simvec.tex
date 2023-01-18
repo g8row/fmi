@@ -1,0 +1,312 @@
+\documentclass{article}
+
+\usepackage{amsmath} 
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[bulgarian,english]{babel}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+
+\newcommand*{\nullvec}{\vec{\mathcal{O}}}
+\newcommand*{\bC}{\mathbb{C}}
+\newcommand*{\bR}{\mathbb{R}}
+\newcommand*{\mat}[2]{M_{{#1}\times {#2}}}
+\newcommand*{\ska}[2]{\langle #1, #2 \rangle}
+
+\title{22. Симетрични и ермитови матрици и оператори.}
+\author{Александър Гуров}
+\date{\datebulgarian{\today}}
+
+\newcommand{\dok}{\underline{Доказателство}\  }
+
+\newcommand{\tvurdenie}[2]{
+    \begin{tcolorbox}[title = #1 ,colframe = blue!70!black, colback = blue!10!white]
+        #2
+    \end{tcolorbox}
+}
+\newcommand{\opredelenie}[2]{
+    \begin{tcolorbox}[title = #1 ,colframe = red!70!black, colback = red!10!white]
+        #2
+    \end{tcolorbox}
+}
+\newcommand{\primer}[2]{
+    \begin{tcolorbox}[title = #1 ,colframe = blue!70!black, colback = blue!10!white]
+        #2
+    \end{tcolorbox}
+}
+
+\begin{document}
+\maketitle
+\opredelenie{Определение 22.1}{
+    Матрица $A \in M_{n\times n}(\mathbb{R})$
+    (съответно $A \in M_{n\times n}(\mathbb{C})$) е симетрична (ермитова), ако $\overline{A}^t= A$.
+}
+\tvurdenie{Твърдение 22.2}{
+(i) Множеството \[M^{sym}_{n\times n}(\mathbb{R}) = {A \in M_{n\times n}(\mathbb{R})| \overline{A}^t = A}\]
+на симетричните матрици и множеството
+\[M^{Herm}_{n\times n}(\mathbb{C}) = {A \in M_{n\times n}(\mathbb{C})| \overline{A}^t = A}\]
+на ермитовите матрици са линейни пространства над полето $\mathbb{R}$ на
+реалните числа.\\
+(ii) Ако $A \in M_{n\times n}(\mathbb{R}$) (съответно $A \in M_{n\times n}(\mathbb{C})$) е
+обратима симетрична (ермитова) матрица, то обратната матрица $A^{-1}$
+е симетрична (ермитова).\\
+(iii) Ако $A, B \in M_{n\times n}(\mathbb{R})$ (съответно $A, B \in M_{n\times n}(\mathbb{C})$)
+са симетрични (ермитови) матрици и $AB = BA$, то $AB$ е симетрична (ермитова) матрица.
+}
+\dok (i) За произволни матрици $M, N \in M_{m\times n}(\mathbb{C})$ твърдим,
+че $\overline{(M + N)} = \overline{M} + \overline{N}$. По-точно,
+\begin{gather*}
+    \overline{(M + N)}_{i,j}=\overline{(M+N)_{i,j}}=\overline{M_{i,j}+N_{i,j}}=\overline{M_{i,j}}+\overline{N_{i,j}}=\\
+    =\overline{M}_{i,j}+\overline{N}_{i,j}=(\overline{M}+\overline{N})_{i,j}
+\end{gather*}
+за всички $1\leq i \leq m, 1\leq j \leq n$, защото $\overline{z_1+z_2}=\overline{z_1}+\overline{z_2}$
+за произволни комплексни числа $z_1,z_2\in \bC$.
+За произволна матрица $M\in \mat{m}{n}(\bC)$ и произволно комплексно число $z\in\bC$ имаме
+\[
+    \overline{(zM)}_{i,j}=\overline{(zM)_{i,j}}=\overline{(zM_{i,j})}=
+    \overline{z}\overline{(M)_{i,j}}=\overline{z}\overline{(M)}_{i,j}=(\overline{z}\overline{M})_{i,j}
+\]
+за всички $1\leq i \leq m, 1\leq j \leq n$, защото $\overline{z_1z_2}=\overline{z_1}\overline{z_2}$
+за произволни комплексни числа $z_1,z_2\in \bC$.
+Ако $\overline{A}^t=A$ и $\overline{B}^t=B$, то
+\[
+    \overline{(A+B)}^t=\overline{A}^t+\overline{B}^t=A+B,
+\]
+така че $A+B$ е симетрична (ермитова) матрица. За произволно $\lambda\in\bR$ е в сила
+\[
+    \overline{(\lambda A)}^t=n\overline{\lambda}\overline{A}^t=\lambda A
+\]
+и следователно $\lambda A$ е симетрична (ермитова) матрица и множеството на симетричните
+(ермитовите) матрици е линейно пространство над $\bR$.
+Да забележим, че ако $A \in M^{Herm}_{n\times n}(\mathbb{C})\ {\mathbb{O}_{n\times n}}$ е
+ненулева ермитова матрица и $z \in \bC \setminus \bR$ е комплексно нереално число, то
+$zA \notin M^{Herm}_{n\times n}(\mathbb{C})$ не е ермитова, защото
+\[
+    \overline{(zA)}^t=(\overline{z}\overline{A})^t=\overline{z}\overline{A}^t=\overline{z}A\neq zA
+\]
+По-точно, за $A_{i,j}\neq 0$ имаме $\overline{z}A_{i,j}=\overline{(zA)}_{i,j}\neq (zA)_{i,j}=zA_{i,j}$
+съгласно
+\[
+    A_{i,j}(z-\overline{z})\neq 0
+\]
+(ii) Чрез комплексно спрягане и транспониране на равенството $AA^{-1} = E_n$
+получаваме
+\[
+    E_n = \overline{E_n}^t = \overline{(AA^{-1})}^t =(\overline{A}\overline{A^{-1}})^t=
+    (\overline{A^{-1}})^t\overline{A}^t=(\overline{A^{-1}})^tA
+\]
+съгласно $\overline{XY}=\overline{X}\overline{Y}$ за произволни матрици $X,Y\in\mat{n}{n}(\bC)$.
+Единственото решение на матричното уравнение $ZA=E_n$ е $A^{-1}$, откъдето $(\overline{A^{-1}})^t=A^{-1}$
+и $A^{-1}$ е симетрична (ермитова) матрица.
+(iii) съгласно
+\[
+    \overline{(AB)}^t=(\overline{A}\overline{B})^t=\overline{B}^t\overline{A}^t=BA=AB,
+\]
+матрицата $AB$ е симетрична (ермитова).
+
+\opredelenie{Определение 22.3}{
+    Линеен оператор $\varphi: V\rightarrow V$ в еклидово(унитарно) пространство V е
+    симетричен (съответно, ермитов), ако
+    \[
+        \langle\varphi(u),v\rangle=\langle v,\varphi(u)\rangle, \text{  за произвони вектори  } u,v\in V
+    \]
+}
+\tvurdenie{Твърдение 22.4}{
+    Следните условия са еквивалентни за линеен оператор $\varphi: V\rightarrow V$ в n-мерно
+    евклидово (унитарно) пространство V :\\
+    (i) $\varphi$ е симетричен (ермитов) оператор;
+    (ii) произволен базис $b_1,..., b_n$ на V изпълнява равенствата
+    \[
+        \langle\varphi(b_i), b_j\rangle=\langle b_i, \varphi(b_j)\rangle \text{  за всички } 1 \leq i, j \leq n;
+    \]
+    (iii) произволен ортонормиран базис $e_1,..., e_n$ на V изпълнява равенствата
+    \[
+        \langle\varphi(e_i), e_j\rangle=\langle e_i, \varphi(e_j)\rangle \text{  за всички } 1 \leq i, j \leq n;
+    \]
+    (iv) матрицата A на $\varphi$ спрямо ортонормиран базис $e_1,..., e_n$ на V е
+    симетрична (ермитова).
+}
+\dok Ясно е, че $(i) \Rightarrow (ii) \Rightarrow (iii)$.
+$(iii) \Leftrightarrow (iv)$ Нека $e = (e_1, . . . , e_n)$ е ортонормиран базис на V и
+$A = (A_{ij})^n_{i,j=1} \in\mat{n}{n}(\bR)$ или $A = (A_{ij})^n_{i,j=1} \in\mat{n}{n}(\bC)$
+е матрицата на $\varphi$ спрямо базиса $e$. Координатите на $\varphi(e_i)$ спрямо
+базиса $e$ на $V$ са разположени в $i$-тия стълб на A, така че
+\[
+    \ska{\varphi(e_i)}{e_j}=\ska{\sum_{s=1}^{n}A_{si}e_s}{e_j}=\sum_{s=1}^{n}A_{si}\ska{e_s}{e_j}=
+    A_{ji}\ska{e_j}{e_j}=A_{ji}
+\]
+Аналогично,
+\[
+    \ska{e_i}{\varphi(e_j)}=\ska{e_i}{\sum_{s=1}^{n}A_{sj}e_s}=\sum_{s=1}^{n}\overline{A_{sj}}\ska{e_i}{e_s}=
+    \overline{A_{ij}}\ska{e_i}{e_i}=\overline{A_{ij  }}
+\]
+Затова условие (iii) е еквивалентно над
+\begin{equation*}\label{1}
+    A_{ji}=\ska{\varphi(e_i)}{e_j}=\ska{e_i}{\varphi(e_j)}=\overline{A_{ij}} \text{ \  за всички  \ } 1\leq i,j \leq n.
+\end{equation*}
+По определение, матрицата $A$ е симетрична (ермитова) ако $\overline{A}^t = A$. Знаейки $(\overline{A}^t)_{ji} = (\overline{A})_{ij} = \overline{A_{ij}}$ за всички
+$1 \leq i, j \leq n$, стигаме до извода, че (\ref*{1}) е еквивалентно на $A_{j,i} = (\overline{A}^t)_{ji}$
+за всички $1 \leq i, j \leq n$, което се свежда към $A = \overline{A}^t$, т.е. към условие (iv).
+За $(iii) \Rightarrow (i)$ да предположим, че $e_1,..., e_n$ е ортонормиран базис на V с
+$\ska{\varphi(e_i)}{e_j} = \ska{e_i}{\varphi(e_j)}$ за всички $1 \leq i, j \leq n$.
+Тогава произволни вектори $u = \sum^n_{i=1}x_ie_i$ и $v = \sum^n_{j=1}y_je_j$ oт $V$
+изпълняват равенствата
+\begin{gather*}
+    \ska{\varphi(u)}{v}=\ska{\varphi\left(\sum^n_{i=1}x_ie_i\right)}{\sum^n_{j=1}y_je_j}
+    =\ska{\sum^n_{i=1}x_i\varphi(e_i)}{\sum^n_{j=1}y_je_j}=\\
+    =\sum_{i=1}^{n}\sum_{j=1}^{n}x_i\overline{y_j}\ska{\varphi(e_i)}{e_j}
+    =\sum_{i=1}^{n}\sum_{j=1}^{n}x_i\overline{y_j}\ska{e_i}{\varphi(e_j)}=\\
+    =\ska{\sum^n_{i=1}x_ie_i}{\sum^n_{j=1}y_j\varphi(e_j)}
+    =\ska{\sum^n_{i=1}x_ie_i}{\varphi\left(\sum^n_{j=1}y_je_j\right)}=\ska{u}{\varphi(v)}
+\end{gather*}
+така че $\varphi : V \rightarrow V$ е симетричен (ермитов) оператор.
+
+\tvurdenie{Твърдение 22.5}{
+    Всички характеристични корени на симетричен (ермитов) оператор $\varphi : V \rightarrow V$
+    в ненулево крайномерно евклидово (унитарно) пространство V са реални числа.
+}
+
+\dok Първо ще проверим, че произволна собствена стойност
+$\lambda$ на ермитов оператор $\varphi : V \rightarrow V$ е реално число. За целта забелзваме,
+че произволен собствен вектор $v \in V \setminus {\nullvec_V}$, отговарящ на собствена
+стойност $lambda \in \bC$ изпълнява равенствата
+\[
+    \overline\lambda||v||2 = \ska{v}{\lambda v} = \ska{v}{\varphi(v)} = \ska{\varphi(v)}{v} =
+    \ska{\lambda v}{v}= \lambda {||v||}^2 .
+\]
+Следователно $(\overline\lambda-\lambda){||v||}2 = \overline\lambda{||v||}^2-\lambda{||v||}^2 = 0$
+с ${||v||}^2 \in R^{>0}$, откъдето $\overline\lambda = \lambda\in \bR$ е реално число.
+Следващата стъпка в доказателството установява, че всички характеристични корени на ермитов оператор
+$\varphi : V \rightarrow V$ в ненулево крайномерно унитарно пространство V са реални числа. По определение,
+характеристичният полином
+$f_\varphi(x) \in \bC[x] \setminus \bC$ на $\varphi$ ще има комплексни коефициенти. Съгласно
+Основната теорема на алгебрата, всички корени на $f_\varphi(x) = 0$ са комплексни
+числа. Знаем, че всички характеристични корени $\lambda$ на $\varphi$ са собствени стойности.
+По първата стъпка на доказателството получаваме, че $\varphi \in \bR$ са реални числа.
+Всяка ермитова матрица A се реализира като матрица на ермитов оператор
+спрямо ортонормиран базис. По-точно, ако $e = (e_1, . . . , e_n)$ e ортонормиран базис на
+n-мерно унитарно пространство и $\varphi : V \rightarrow V$ е линейният оператор
+с матрица A спрямо e, то $\varphi$ е унитарен оператор.
+Характеристичните корени на $\varphi$ съвпадат с характеристичните корени на A.
+Следователно всички характеристични корени на ермитова матрица A са реални числа.
+
+Всяка симетрична матрица $A\in M^{sym}_{n\times n}(\mathbb{R}) \subset M^{Herm}_{n\times n}(\bC)$
+е ермитова. Затова характеристичните корени на матрицата A са реални числа.
+В резултат, характеристичните корени на симетричен оператор $\varphi : V \rightarrow V$
+в крайномерно евклидово пространство V са реални числа, защото матрицата
+на $\varphi$ спрямо ортонормиран базис е симетрична.
+
+\tvurdenie{Твърдение 22.6}{
+Нека $\varphi : V \rightarrow V$ е симетричен (ермитов) оператор
+в евклидово (унитарно) пространство V . Тогава:\\
+(i) собствени вектори $u,v$, отговарящи на различни собствени стойности $\lambda, \mu$
+са ортогонални помежду си;\\
+(ii) ортогоналното допълнение $U^\perp$ на $\varphi$-инвариантно подпространство
+U на V е $\varphi$-инвариантно. \\
+В частост, ако $e_1, . . . , e_k$ е ортонормиран базис на U
+и $e_{k+1},..., e_n$ е ортонормиран базис на $U^\perp$, то $e_1,..., e_k,e_{k+1},...,e_n$
+е ортонормиран базис на V , в който матрицата на $\lambda : U \oplus U^\perp \rightarrow U \oplus U^\perp$ e
+\[
+    A =\left(\begin{array}{cc}
+            A_1                        & \mathbb{O}_{k\times(n-k)} \\
+            \mathbb{O}_{(n-k)\times k} & A_2
+        \end{array}
+    \right)
+\]
+за матрицата $A_1$ на $\varphi : U \rightarrow U$ спрямо базиса $e_1,..., e_k$ на U и
+матрицата $A_2$ на $\varphi : U^\perp \rightarrow U^\perp$ спрямо базиса $e_{k+1}, . . . , e_n$
+на $U^\perp$.
+}
+
+\dok(i) От определението за симетричност (ермитовост) на
+$\varphi : U \rightarrow U$ , приложено към собствените вектори $u, v \in V \setminus {\nullvec_V}$
+получаваме
+\[
+    \mu\ska{u}{v} = \,i\ska{u}{v} = \ska{u}{\mu v} = \ska{u}{\mu(v)} = \ska{\varphi(u)}{v} =
+    \ska{\lambda u}{v} = \lambda\ska{u}{v},
+\]
+вземайки предвид, че собствените стойности на ермитов оператор са реални
+числа. Следователно $(\lambda-\mu)\ska{u}{v} = \lambda \ska{u}{v} - \mu\ska{u}{v}= 0$
+с $\lambda \neq \mu$, така че $\ska{u}{v} = 0$ и векторите $u, v$ са ортогонални помежду си.\\
+(ii) За произволни вектори $u \in U$ и $v \in U^\perp$ е в сила
+\[\ska{u}{\varphi(v)} = \ska{\varphi(u)}{v} = 0,\]
+съгласно $\varphi(u) \in U$. Следователно $\varphi(v) \in U^\perp$
+и $U^\perp$ е $\varphi$-инварианатно подпространство на V.
+
+\tvurdenie{Твърдение 22.7}{
+    За произволен симетричен (ермитов) оператор $\varphi : V \rightarrow V$ в n-мерно
+    евклидово (унитарно) пространство V съществува ортонормиран базис $e_1, . . . , e_n$ на V,
+    в който матрицата
+    \[
+        D=\left(\begin{array}{ccccc}
+                \lambda_1 & 0         & \dots & 0             & 0         \\
+                0         & \lambda_2 & \dots & 0             & 0         \\
+                \dots     & \dots     & \dots & \dots         & \dots     \\
+                0         & 0         & \dots & \lambda_{n-1} & 0         \\
+                0         & 0         & \dots & 0             & \lambda_n \\
+            \end{array}\right)\in \mat{n}{n}(\bR)
+    \]
+    на $\varphi$ е диагонална.
+}
+\dok С индукция по $n = dim V$ , за $n = 1$ няма какво да се
+доказва. В общия случай, $\varphi : V \rightarrow V$ има собствен вектор $v_1 \in V \setminus \{\nullvec_V\}$.
+За ермитов оператор $\varphi : V \rightarrow V$ в крайномерно унитарно пространство V това е
+в сила поради наличието на собствен вектор за произволен линеен оператор в
+крайномерно пространство над полето C на комплексните числа. За симетричен оператор $\varphi$
+използваме, че всички характеристични корени на $\varphi$ са реални
+числа, а оттам и собствени стойности на $\varphi$, така че съществува собствен вектор
+$v_1 \in V \setminus \{\nullvec_V\}$, отговарящ на собствената стойност $\lambda_1 \in \bR$.
+Заменяме $v_1$ с единичен вектор $e1 =\frac{1}{||v1||}v_1 \in l(v_1)$ и забелязваме,
+че $U := l(e_1) = l(v_1)$ е 1-мерно $\varphi$-инвариантно подпространство на V, върху което
+действието на $\varphi$ се свежда до умножение със собствената стойност $\lambda_1$, отговаряща
+на $v_1$. Ортогоналното допълнение $U^\perp$ на U е $(n-1)$-мерно $\varphi$-инвариантно
+подпространство на V . По индукционно предположение съществува ортонормиран базис
+$e_2, . . . , e_n$ на $U^\perp$, в който матрицата
+\[
+    D'=\left(\begin{array}{cccc}
+            \lambda_2 & 0         & \dots & 0         \\
+            0         & \lambda_3 & \dots & 0         \\
+            \dots     & \dots     & \dots & \dots     \\
+            0         & 0         & \dots & \lambda_n
+        \end{array}
+    \right)
+\]
+на симетричния оператор $\varphi : U^\perp \rightarrow U^\perp$ е диагонална.
+Сега $e_1, e_2,..., e_n$ е ортонормиран базис на $V = U \oplus U^\perp$, в който матрицата
+\[
+    D=\left(\begin{array}{cc}
+            \lambda_1                  & \mathbb{O}_{1\times(n-1)} \\
+            \mathbb{O}_{(n-1)\times 1} & D'
+        \end{array}
+    \right)=\left(\begin{array}{ccccc}
+            \lambda_1 & 0         & \dots & 0             & 0         \\
+            0         & \lambda_2 & \dots & 0             & 0         \\
+            \dots     & \dots     & \dots & \dots         & \dots     \\
+            0         & 0         & \dots & \lambda_{n-1} & 0         \\
+            0         & 0         & \dots & 0             & \lambda_n
+        \end{array}\right)
+\]
+на $\varphi: V =  \rightarrow U \oplus U^\perp = v$ е диагонална.
+
+\tvurdenie{Следствие 22.8}{
+За произволна симетрична (ермитова) матрица $A \in \mat{n}{n}(\bR)$
+(съответно, $A \in \mat{n}{n}(\bC)$) съществува ортогонална (унитарна) матрица
+$T \in \mat{n}{n}(\bR)$ (съответно, $T \in \mat{n}{n}(\bC)$), така че
+\[
+    D=T^{-1}AT=\overline{T}^tAT=\left(\begin{array}{ccccc}
+            \lambda_1 & 0         & \dots & 0             & 0         \\
+            0         & \lambda_2 & \dots & 0             & 0         \\
+            \dots     & \dots     & \dots & \dots         & \dots     \\
+            0         & 0         & \dots & \lambda_{n-1} & 0         \\
+            0         & 0         & \dots & 0             & \lambda_n
+        \end{array}\right)\in \mat{n}{n}(\bR)
+\]
+е диагонална матрица.
+}
+\dok  Фиксираме ортонормиран базис $f = (f_1, . . . , f_n)$ в n-мерно евклидово (унитарно)
+пространство V и разглеждаме линейния оператор $\varphi : V \rightarrow V$ с матрица A спрямо f.
+Oператорът $\varphi$ е симетричен (ермитов) и съществува ортонормиран базис $e = (e_1, . . . , e_n)$
+на V , в който матрицата D на $\varphi$ е диагонална. Матрицата на прехода T от
+ортонормирания базис f на V към ортонормирания базис e на V е ортогонална (унитарна) и
+$D = T^{-1}AT = \overline{T}^tAT$.
+\end{document}
