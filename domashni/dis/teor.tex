@@ -1,0 +1,139 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage[utf8]{inputenc}
+\usepackage[T2A]{fontenc}
+\usepackage[bulgarian,english]{babel}
+\usepackage{amssymb}
+\usepackage{tcolorbox}
+\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+\newcommand*{\bR}{\mathbb{R}}
+
+\title{Теоретично домашно}
+\author{Александър Гуров}
+\date{\datebulgarian{\today}}
+
+\begin{document}
+\maketitle
+
+\section{Задача}
+
+\textbf{а)}
+Функцията $f: \bR \rightarrow \bR$ е ограничена отгоре, ако съществува $\lambda \in \bR$, за което е изпълнено условието:
+$\exists\lambda \in \bR \ \forall x \in \bR : f(x)\leq\lambda$ и $\lambda$ се нарича горна граница (мажоранта). Функцията $f$ не е ограничена отгоре,
+ако е изпълнено:
+\begin{align*}
+    \neg(\exists\lambda \in \bR \ \forall x \in \bR : f(x)\leq\lambda)       & \equiv \\
+    \equiv\forall\lambda \in \bR \ \neg(\forall x \in \bR : f(x)\leq\lambda) & \equiv \\
+    \equiv\forall\lambda \in \bR \ \exists x \in \bR : \neg(f(x)\leq\lambda) & \equiv \\
+    \equiv\forall\lambda \in \bR \ \exists x \in \bR : f(x)>\lambda          &
+\end{align*}
+\textbf{б)}
+Функцията $f: \bR \rightarrow \bR$ има най-голяма стойност, ако съществува $x_1 \in \bR$, за което е изпълнено условието:
+$\exists x_1 \in\bR \ \forall x_2 \in \bR: f(x_1)\geq f(x_2)$ и $\lambda$ се нарича горна граница (мажоранта). Функцията $f$ няма
+най-голяма стойност, ако е изпълнено:
+\begin{align*}
+    \neg(\exists x_1 \in\bR \ \forall x_2 \in \bR: f(x_1)\geq f(x_2))       & \equiv \\
+    \equiv\forall x_1 \in\bR \ \neg(\forall x_2 \in \bR: f(x_1)\geq f(x_2)) & \equiv \\
+    \equiv\forall x_1 \in\bR \ \exists x_2 \in \bR: \neg(f(x_1)\geq f(x_2)) & \equiv \\
+    \equiv\forall x_1 \in\bR \ \exists x_2 \in \bR: f(x_1)< f(x_2)          &
+\end{align*}
+\textbf{в)} (Koши) Нека $f : D \rightarrow \bR, D \subset \bR$. $f$ е непрекъсната в $x_0 \in D$, ако за всяко $\varepsilon > 0$
+съществува $\delta > 0$ такова, че ако $x \in D$ и $|x - x_0| < \delta$, то $|f (x) - f (x_0)| < \varepsilon$.
+Функцията $f$ се нарича непрекъсната, ако $f$ е непрекъсната във всяка точка от дефиниционната си област,
+тoест:
+\[
+    \forall x_0 \in D \ \forall \varepsilon > 0 \ \exists \delta > 0 \  \forall x \in D, |x - x_0| < \delta : \ |f (x) - f (x_0)| < \varepsilon
+\]
+Функцията $f$ не е непрекъсната, когато:
+\begin{align*}
+    \neg(\forall x_0 \in D \ \forall \varepsilon > 0 \ \exists \delta > 0 \  \forall x \in D, |x - x_0| < \delta : \ |f (x) - f (x_0)| < \varepsilon)          & \equiv \\
+    \equiv\exists x_0 \in D \ \neg(\forall \varepsilon > 0 \ \exists \delta > 0 \  \forall x \in D, |x - x_0| < \delta : \ |f (x) - f (x_0)| < \varepsilon)    & \equiv \\
+    \equiv\exists x_0 \in D \ \exists \varepsilon > 0 \ \neg(\exists \delta > 0 \  \forall x \in D, |x - x_0| < \delta : \ |f (x) - f (x_0)| < \varepsilon)    & \equiv \\
+    \equiv\exists x_0 \in D \ \exists \varepsilon > 0 \ \forall \delta > 0 \  \neg(\forall x \in D, |x - x_0| < \delta : \ |f (x) - f (x_0)| < \varepsilon)    & \equiv \\
+    \equiv\exists x_0 \in D \ \exists \varepsilon > 0 \ \forall \delta > 0 \  \exists x \in D,\neg( |x - x_0| < \delta : \ |f (x) - f (x_0)| < \varepsilon)    & \equiv \\
+    \equiv\exists x_0 \in D \ \exists \varepsilon > 0 \ \forall \delta > 0 \  \exists x \in D, |x - x_0| \geq \delta : \ \neg(|f (x) - f (x_0)| < \varepsilon) & \equiv \\
+    \equiv\exists x_0 \in D \ \exists \varepsilon > 0 \ \forall \delta > 0 \  \exists x \in D, |x - x_0| \geq \delta : \ |f (x) - f (x_0)| \geq \varepsilon    &
+\end{align*}
+
+(Хайне) Нека $f : D \rightarrow \bR, \ D \subset \bR$. Kaзваме, че
+функцията f е непрекъсната в $x_0 \in D$, ако за всяка редица $\{x_n\}^\infty_{n=1} \subset D$ от стойности на аргумента,
+която клони към $x_0$, съответната редица от функционални стойности ${f(x_n)}^\infty_{n=1}$ клони към $f(x_0)$. Функцията $f$
+е непрекъсната, ако $f$ е непрекъсната във всяка точка от дефиниционната си област, тoест:
+\[
+    \forall x_0 \in D \ \forall \{x_n\}^\infty_{n=1} \subset D, \ x_n \xrightarrow[n\rightarrow\infty]{} x_0 : f (x_n) \xrightarrow[n\rightarrow\infty]{} f(x_0)
+\]
+Функцията $f$ не е непрекъсната, когато:
+\begin{align*}
+    \neg(\forall x_0 \in D \ \forall \{x_n\}^\infty_{n=1} \subset D, \ x_n \xrightarrow[n\rightarrow\infty]{} x_0 : f (x_n) \xrightarrow[n\rightarrow\infty]{} f(x_0))             & \equiv \\
+    \equiv\exists x_0 \in D \ \neg(\forall \{x_n\}^\infty_{n=1} \subset D, \ x_n \xrightarrow[n\rightarrow\infty]{} x_0 : f (x_n) \xrightarrow[n\rightarrow\infty]{} f(x_0))       & \equiv \\
+    \equiv\exists x_0 \in D \ \exists \{x_n\}^\infty_{n=1} \subset D, \ \neg(x_n \xrightarrow[n\rightarrow\infty]{} x_0 : f (x_n) \xrightarrow[n\rightarrow\infty]{} f(x_0))       & \equiv \\
+    \equiv\exists x_0 \in D \ \exists \{x_n\}^\infty_{n=1} \subset D, \ \neg(x_n \xrightarrow[n\rightarrow\infty]{} x_0) : \neg(f (x_n) \xrightarrow[n\rightarrow\infty]{} f(x_0)) &
+\end{align*}
+
+\section[2]{Задача}
+\textbf{a)}  Числовата редица $\{a_n\}^\infty_{n=1}$ е ограничена, следователно $\exists b,c \in \bR \ \forall n \in \mathbb{N}:b\leq a_n \leq c$
+По теоремата на Болцано-Вайерщрас (Принцип за компактност), в числовата редица същесвува поне една точка на сгъстяване.
+Дефиницията на $lim \ sup \ a_n$ е най-дясната точка на сгъстяване на редицата. Следователно $\forall \varepsilon>0 \ \forall n \in \mathbb{N} : |a_n - lim \ sup \ a_n| < \varepsilon$.
+Mножеството $V=\{\forall n\in \mathbb{N} \  \forall \varepsilon > 0: lim \ sup \ a_n + \varepsilon < a_n \leq c\}, V \subseteq\mathbb{N}$
+от индекси на елементи от числовата редица, които се намират между $lim \ sup \ a_n$ и горната граница на числовата редица $\{a_n\}^\infty_{n=1}$
+ще бъде крайно или празно. Тоест допълнението на $V$, $\overline{V}$ ще бъде кофинитно и ще бъде дефинирано
+$\overline{V} = \{\forall n \in \mathbb{N} \ \forall \varepsilon > 0: a_n < lim  \ sup \ a_n +\varepsilon\}$,
+с което доказваме, че $lim \ sup \ a_n$ е същесвена мажоранта. Множеството от същесвените мажоранти съвпада с множеството V,
+от което е очевидно, че е ограничено отдолу и долната му граница съвпада с $lim \ sup \ a_n$.
+
+\textbf{б)}
+Можем да представим редицата $c_n$, като $sup(\{a_k\}^\infty_{k=1}\setminus\{a_k\}^n_{k=1})$. Тогава
+\[
+    \lim_{n\rightarrow 0} sup(\{a_k\}^\infty_{k=1}\setminus\{a_k\}^n_{k=1}) = sup(\{a_k\}^\infty_{k=1}) = lim \ sup \ a_n
+\]
+
+\textbf{в)} Както доказахме в 2a), $\overline{V}$ е кофинитно и $\overline{V} = \{\forall n \in \mathbb{N} \ \forall \varepsilon > 0: a_n < lim  \ sup \ a_n +\varepsilon\}$,
+следователно почти всички членове на редицата се намират в $(-\infty, lim \ sup \ a_n + \varepsilon)$.
+
+\textbf{г)}
+От точките на сгъстяване на $\{a_n\}^\infty_{n=1}$ и $\{b_n\}^\infty_{n=1}$:
+\begin{gather*}
+    \forall\varepsilon > 0 \ \forall n_1 \in \mathbb{N}, \ \forall n\geq n_0: a_n \leq lim \ sup \ a_n + \frac{\varepsilon}{2}\\
+    \forall\varepsilon > 0 \ \forall n_2 \in \mathbb{N}, \ \forall n\geq n_0: b_n \leq lim \ sup \ b_n + \frac{\varepsilon}{2}
+\end{gather*}
+При $n_0 = max(n_1,n_2)$. Следователно
+\[
+    \forall\varepsilon > 0 \ \forall n \geq n_0 : a_n + b_n \leq lim \ sup \ a_n + lim \ sup \ b_n + \varepsilon
+\]
+Тогава $lim \ sup \ _{n\rightarrow 0} \ (a_n + b_n) \leq lim \ sup \ _{n\rightarrow 0} \ a_n + lim \ sup \ _{n\rightarrow 0} \ b_n$.
+
+\section[3]{Задача}
+Функцията $f: (a, +\infty) \rightarrow \bR$ e диференцируема и от това знаем, че е непрекъсната.
+Следователно за $\forall x \in (a, +\infty)$ съществува $f'(x)$. Също знаем, че $f$ е ограничена, тоест $\forall x \in (a, +\infty) \ \exists b, c \in \bR: b \leq f(x) \leq c$.
+Нека вземем две произволни точки $m,n \in (a, +\infty), n>m$. От теоремата на Лагранж знаем, че съществува $\xi \in (m,n)$, за което е изпълнено
+\[
+    f'(\xi)=\frac{f(n)-f(m)}{n-m}
+\]
+Нека съставим две редици $\forall \varepsilon >0 \ \{m_k\}^\infty_{k=1}, m_k=a+k$, $\forall \varepsilon >0 \ \{n_k\}^\infty_{k=1}, n_k=a+k+1$.
+Нека разгледаме производната на $x_k \in (m_k, n_k), k \rightarrow \infty$:
+\[
+    f'(x_k)=\frac{f(n_k)-f(m_k)}{n_k-m_k}
+\]
+Със сигурност можем да съставим $\{x_k\}^\infty_{k=1}$, които имат производна, само трябва да докажем, че $f'(x)=0$.
+$f$ е ограничена, следователно $b\leq f(m_k)\leq c$ и $b\leq f(n_k)\leq c$ и
+\[
+    2b\leq \frac{f(n_k)-f(m_k)}{n_k-m_k} \leq 2c
+\]
+От редиците $n_k-m_k=a+k+1-a-k=1$:
+\[
+    2b\leq f(n_k)-f(m_k) \leq 2c
+\]
+ако $d=max(b,c)$, то
+\[
+    |f(n_k)-f(m_k)| \leq 2d
+\]
+Тъй като $f$ е ограничена, разликата на $f(n_k)$ и $f(m_k)$ ще намалява и ще се изпълни сходимостта във формата на Коши:
+\[
+    |f(n_k)-f(m_k) - 0| \leq \varepsilon \Rightarrow f(n_k)-f(m_k) \xrightarrow[k \rightarrow \infty]{} 0
+\]
+\[
+    f'(x_k)\xrightarrow[k \rightarrow \infty]{} 0
+\]
+\end{document}
